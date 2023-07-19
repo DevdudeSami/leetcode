@@ -10,8 +10,6 @@ class Solution(object):
         charIndexMap = {}
 
         for i in range(count):
-            print(charIndexMap)
-            print(substring)
             if s[i] in substring:
                 if len(substring) > len(longest_substring):
                    longest_substring = substring 
