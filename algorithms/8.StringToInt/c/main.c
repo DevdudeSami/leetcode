@@ -16,16 +16,6 @@ int to_digit(char c) {
     return c - 48;
 }
 
-// From: https://stackoverflow.com/a/18581693
-int quick_pow10(int n) {
-    static int pow10[10] = {
-        1, 10, 100, 1000, 10000, 
-        100000, 1000000, 10000000, 100000000, 1000000000
-    };
-
-    return pow10[n]; 
-}
-
 int myAtoi(char * s){
     int size = strlen(s);
 
@@ -35,6 +25,11 @@ int myAtoi(char * s){
 
     int digits_read = 0;
     int result = 0;
+
+    static int pow10[10] = {
+        1, 10, 100, 1000, 10000, 
+        100000, 1000000, 10000000, 100000000, 1000000000
+    };
 
     for(int i = 0; i < size; i++) {
         char c = s[i];
@@ -68,14 +63,13 @@ int myAtoi(char * s){
 
             continue;        
         }
-        else result += c_digit * quick_pow10(8-digits_read);
+        else result += c_digit * pow10[8-digits_read];
         digits_read++;
     }
 
-    result /= quick_pow10(9-digits_read);
+    result /= pow10[9-digits_read];
     return positive ? result : -result;
 }
-
 
 int main() {
     printf("%d\n", myAtoi("42"));
