@@ -44,8 +44,8 @@ int main() {
 		printf("%s\n", result);
 		free(result);
 
-		char *strs3[] = {"a"};
-		result = longestCommonPrefix(strs3, 1);
+		char *strs3[] = {"ab", "a"};
+		result = longestCommonPrefix(strs3, 2);
 		printf("%s\n", result);
 		// free(result);
 
